@@ -31,11 +31,16 @@ void menu(){
     }
 }
 
-
+////// FUNCTION TO PRINT THE RESULT SLIP ///////
 void printSlip(){
     
-    //INITIALISING THE STRUCT WITH STUDENT DATA
+    /// INITIALISING THE STRUCT WITH STUDENT DATA
+
+    /* THIS PART REQUIRES THE FUNCTION TO DETERMINE THE GRADES, THE GRADE FUNCTION SHOULD RETURN A STRING e.g
+    "A+" WHICH CAN BE PASSED TO THE STUDENT STRUCT BELOW  */
     student mystudent;
+
+    // eg mystudent.ma110 = grades(40); this should return a "D"
     mystudent.name = "Aliyon Tembo";
     mystudent.grade_ma110 = "A+";
     mystudent.grade_ph110 = "B";
@@ -56,7 +61,7 @@ void printSlip(){
     };
 
 
-      //DRAW LINES 
+      /// DRAW LINES 
     int line_size = 55;
     for(int i=0; i<line_size; i++){
         cout<<"-";
