@@ -1,10 +1,42 @@
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 #include <iostream>
 #include <fstream>
 #include <string>
 
 using namespace std;
+
+string gradeConventer(int score){
+    string grade;
+        if(score<40 && score>=0 ){
+            grade="D";
+    }
+        else if(score<50 && score>=0){
+            grade="D+";
+        }
+            else if(score<56 && score>=0 ){
+                grade="C";
+        }
+                else if(score<62 && score>=0 ){
+                    grade="C+";
+    }
+                    else if(score<68 && score>=0 ){
+                        grade="B";
+   }
+
+                        else if(score<76 && score>=0 ){
+                            grade="B+";
+}
+                            else if(score<86 && score>=0 ){
+                                grade="A";
+}
+                                else if(score<101 && score>=0){
+                                grade="A+";
+
+}
+
+return grade;
+}
 
 struct student{
     string name;
@@ -27,7 +59,7 @@ void readStudentRecords() {
 
     // THI WILL READ THE FILE LINE BY LINE 
     string line;
-    Student student[MAX_STUDENTS]; // THIS ARRAY IS USED TO STORE STUDENT INFORMATION 
+    student student[MAX_STUDENTS]; // THIS ARRAY IS USED TO STORE STUDENT INFORMATION 
 
     for (int i = 0, j = 0; i < MAX_STUDENTS && getline(file, line); ++i) {
     // INITIALIZING THE VARIABLE TO STORE THE INDICES OF A COMMA
