@@ -3,10 +3,11 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstdlib> // For exit (EXIT FAILURE)
 
 using namespace std;
 
-struct student{
+struct Student{
     string name;
     int student_id;
     // A FIXED ARRAY FOR THE NUMBER OF COURSES EACH STUDENT IS TAKING 
@@ -19,7 +20,7 @@ const int MAX_STUDENTS = 10;
 // FUNCTION TO READ STUDENT INFORMATION FROM THE FILE 
 void readStudentRecords() {
     // THIS DISPLAYS A ERROR WHEN THE FILE FAILS TO OPEN 
-    ifstream file("sample.txt");
+    ifstream file("grades.txt");
     if (!file.is_open()) {
         cerr << " Error: Unable to open file " << endl;
         exit(EXIT_FAILURE);
@@ -49,7 +50,7 @@ void readStudentRecords() {
     // EXTRACT STUDENT'S NAME AND SID USING THE INDICES OF COMMAS
     if (pos != -1 && next_pos != -1) {
         student[i].name = line.substr(0, pos);
-        student[i].SID = line.substr(pos + 1, next_pos - pos - 1);
+        student[i].student_id = line.substr(pos + 1, next_pos - pos - 1);
     }
     
     // READ GRADE
