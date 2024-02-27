@@ -1,13 +1,44 @@
-<<<<<<< HEAD
+>>>>>>> 652ce555a97d15094264d9239e24641eff6ccbd8
 =======
+//<<<<<<< HEAD
+//=======
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <cstdlib> // For exit (EXIT FAILURE)
 
 using namespace std;
 
-struct Student{
+string gradeCownventer(int score)
+{
+    string grade;
+    if (score < 40 && score >= 0){
+        grade = "D";
+    }
+    else if (score < 50 && score >= 0){
+        grade = "D+";
+    }
+    else if (score < 56 && score >= 0){
+        grade = "C";
+    }
+    else if (score < 62 && score >= 0){
+        grade = "C+";
+    }
+    else if (score < 68 && score >= 0){
+        grade = "B";
+    }
+    else if (score < 76 && score >= 0){
+        grade = "B+";
+    }
+    else if (score < 86 && score >= 0){
+        grade = "A";
+    }
+    else if (score < 101 && score >= 0){
+        grade = "A+";
+    }
+    return grade;
+}
+
+struct student{
     string name;
     int student_id;
     // A FIXED ARRAY FOR THE NUMBER OF COURSES EACH STUDENT IS TAKING 
@@ -20,7 +51,7 @@ const int MAX_STUDENTS = 10;
 // FUNCTION TO READ STUDENT INFORMATION FROM THE FILE 
 void readStudentRecords() {
     // THIS DISPLAYS A ERROR WHEN THE FILE FAILS TO OPEN 
-    ifstream file("grades.txt");
+    ifstream file("sample.txt");
     if (!file.is_open()) {
         cerr << " Error: Unable to open file " << endl;
         exit(EXIT_FAILURE);
@@ -28,7 +59,7 @@ void readStudentRecords() {
 
     // THI WILL READ THE FILE LINE BY LINE 
     string line;
-    Student student[MAX_STUDENTS]; // THIS ARRAY IS USED TO STORE STUDENT INFORMATION 
+    student student[MAX_STUDENTS]; // THIS ARRAY IS USED TO STORE STUDENT INFORMATION 
 
     for (int i = 0, j = 0; i < MAX_STUDENTS && getline(file, line); ++i) {
     // INITIALIZING THE VARIABLE TO STORE THE INDICES OF A COMMA
@@ -50,7 +81,7 @@ void readStudentRecords() {
     // EXTRACT STUDENT'S NAME AND SID USING THE INDICES OF COMMAS
     if (pos != -1 && next_pos != -1) {
         student[i].name = line.substr(0, pos);
-        student[i].student_id = line.substr(pos + 1, next_pos - pos - 1);
+        student[i].SID = line.substr(pos + 1, next_pos - pos - 1);
     }
     
     // READ GRADE
@@ -189,3 +220,4 @@ printSlip();
 
 }
 >>>>>>> 652ce555a97d15094264d9239e24641eff6ccbd8
+>>>>>>> 637bc25e3d47ed20fd92ddc3774a5aa294d05082
