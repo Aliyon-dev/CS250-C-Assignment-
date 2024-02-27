@@ -198,23 +198,5 @@ void printSlip(){
 
 int main(){
 
-//    fstream infile;
-//    infile.open("grades.txt");
-//    string file;
-//    string grades[10];
-//
-//    if(infile.is_open()){
-//        int i = 0;
-//        while(!infile.eof()){
-//            infile>>grades[i];
-//            cout<<grades[i]<<endl;
-//            i +=1;
-//    }
-//    cout<<endl;
-//    menu();
-//    return 0;
-//}
-printSlip();
-
 }
 
