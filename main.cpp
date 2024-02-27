@@ -1,15 +1,23 @@
->>>>>>> 652ce555a97d15094264d9239e24641eff6ccbd8
-=======
-//<<<<<<< HEAD
-//=======
 #include <iostream>
 #include <fstream>
 #include <string>
 
 using namespace std;
 
-string gradeCownventer(int score)
-{
+// ASSUMING THE NUMBER OF STUDENT IN THE FILE WAS 10
+const int MAX_STUDENTS = 10;
+const int NUM_COURSES = 6;
+
+struct student{
+
+    // A FIXED ARRAY FOR THE NUMBER OF COURSES EACH STUDENT IS TAKING 
+    int grades[NUM_COURSES]; 
+    string name;
+    string SID;
+    int student_id;
+};
+
+string gradeConverter(int score) {
     string grade;
     if (score < 40 && score >= 0){
         grade = "D";
@@ -37,16 +45,6 @@ string gradeCownventer(int score)
     }
     return grade;
 }
-
-struct student{
-    string name;
-    int student_id;
-    // A FIXED ARRAY FOR THE NUMBER OF COURSES EACH STUDENT IS TAKING 
-    int grades[6]; 
-
-};
-// ASSUMING THE NUMBER OF STUDENT IN THE FILE WAS 10
-const int MAX_STUDENTS = 10;
 
 // FUNCTION TO READ STUDENT INFORMATION FROM THE FILE 
 void readStudentRecords() {
@@ -219,5 +217,4 @@ int main(){
 printSlip();
 
 }
->>>>>>> 652ce555a97d15094264d9239e24641eff6ccbd8
->>>>>>> 637bc25e3d47ed20fd92ddc3774a5aa294d05082
+
