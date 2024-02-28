@@ -12,73 +12,19 @@
 
 using namespace std;
 
-// ASSUMING THE NUMBER OF STUDENT IN THE FILE WAS 10
-const int MAX_STUDENTS = 10;
-const int NUM_COURSES = 6;
-
 
 /// STRUCT TO STORE STUDENT DETAILS ///
 struct Student{
     string name;
-    int student_id;
-    // A FIXED ARRAY FOR THE NUMBER OF COURSES EACH STUDENT IS TAKING 
-    int grades[6]; 
+    string sin;
+    string MA_110, CS_131, CH_110, LA_111, PH_110, CS_110;
 
 };
-// ASSUMING THE NUMBER OF STUDENT IN THE FILE WAS 10
-const int MAX_STUDENTS = 10;
 
-// FUNCTION TO READ STUDENT INFORMATION FROM THE FILE 
-void readStudentRecords() {
-    // THIS DISPLAYS A ERROR WHEN THE FILE FAILS TO OPEN 
-    ifstream file("sample.txt");
-    if (!file.is_open()) {
-        cerr << " Error: Unable to open file " << endl;
-        exit(EXIT_FAILURE);
-    }
+/// FUNCTION DECLARATION ///
 
-    // THI WILL READ THE FILE LINE BY LINE 
-    string line;
-    Student student[MAX_STUDENTS]; // THIS ARRAY IS USED TO STORE STUDENT INFORMATION 
-
-    for (int i = 0, j = 0; i < MAX_STUDENTS && getline(file, line); ++i) {
-    // INITIALIZING THE VARIABLE TO STORE THE INDICES OF A COMMA
-    int pos = -1, next_pos = -1;
-    
-    // THIS WILL ITERATE THROUGH EACH LINE 
-    for (int k = 0; k < line.length(); ++k) {
-        // IF A COMMA IS FOUND, UPDATE, POS AND NEXT_POS WILL BE UPDATED ACCORDINGLY
-        if (line[k] == ',') {
-            if (pos == -1) {
-                pos = k;
-            } else {
-                next_pos = k;
-                break; // STOPE SEARCHING ONCE NEXT_POS IS FOUND 
-            }
-        }
-    }
-    
-    // EXTRACT STUDENT'S NAME AND SID USING THE INDICES OF COMMAS
-    if (pos != -1 && next_pos != -1) {
-        student[i].name = line.substr(0, pos);
-        student[i].SID = line.substr(pos + 1, next_pos - pos - 1);
-    }
-    
-    // READ GRADE
-    pos = next_pos;
-    for (int k = 0; k < 6; ++k) {
-        // THIS WILL FIND THE NEXT POSITION OF THE COMMA 
-        next_pos = line.find(',', pos + 1);
-        
-        // THIS WILL EXTRACT THE GRADES
-        if (next_pos != string::npos) {
-            student[i].grades[k] = stoi(line.substr(pos + 1, next_pos - pos - 1));
-            pos = next_pos;
-        }
-    }
-}
-    file.close();
-}
+void printSlip(string sin);
+void menu();
 
 void menu(){
     string SID;
@@ -253,23 +199,26 @@ void printSlip(string sin){
 
 int main(){
 
-//    fstream infile;
-//    infile.open("grades.txt");
-//    string file;
-//    string grades[10];
-//
-//    if(infile.is_open()){
-//        int i = 0;
-//        while(!infile.eof()){
-//            infile>>grades[i];
-//            cout<<grades[i]<<endl;
-//            i +=1;
-//    }
-//    cout<<endl;
-//    menu();
-//    return 0;
-//}
-printSlip();
+    ifstream infile;
+    string input, name, sin;
+    infile.open("grades.txt");
 
+    if(infile.is_open()){
+        while(getline(infile, input)){
+            stringstream row(input);
+            getline(row, name, ',');
+            getline(row, sin, ',');
+            cout<<name<<"\t"<<sin<<endl;
+            //cout<<input<<endl;
+            }
+            infile.close();
+            cout<<endl;
+            menu();
+            }
+
+    else{
+        cout<<"File not found. Make sure sure the file is the saved in the directory";
+    }
+
+    return 0;
 }
->>>>>>> 652ce555a97d15094264d9239e24641eff6ccbd8
